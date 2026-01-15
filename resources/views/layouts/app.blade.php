@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    {{-- Google Search Console Verification --}}
+    <meta name="google-site-verification" content="S_K6EYACvbqOORuVxlvZFaFIkcHcgqA1oXsSBrZ1MTs" />
+
     {{-- SEO Meta Tags --}}
     <title>@yield('title', 'Indah Admin Sales - Paket Internet Terbaik')</title>
     <meta name="description" content="@yield('meta_description', 'Penyedia layanan internet (ISP) terbaik dengan harga hemat. Paket internet unlimited untuk rumah & bisnis. Streaming lancar, tanpa FUP.')">

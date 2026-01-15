@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PackageController as AdminPackageController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
@@ -23,6 +24,7 @@ Route::get('/packages/{slug}', [PackageController::class, 'show'])->name('packag
 Route::get('/promo/{slug}', [App\Http\Controllers\PromoController::class, 'show'])->name('promo.show');
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/orders/{id}/success', [OrderController::class, 'success'])->name('order.success');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

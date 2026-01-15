@@ -2,176 +2,399 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Color Palette Variables */
+/* =================================
+   FUTURISTIC COLOR PALETTE
+   ================================= */
 :root {
-    --color-white: #FFFFFF;
-    --color-purple: #B153D7;
-    --color-deep-purple: #4D2FB2;
-    --color-purple-light: #C77FE8;
-    --color-purple-dark: #3A1F8C;
+    /* Primary Colors */
+    --color-mint: #F0FFDF;
+    --color-electric-purple: #B153D7;
+    --color-hot-pink: #F375C2;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, var(--color-electric-purple) 0%, var(--color-hot-pink) 100%);
+    --gradient-accent: linear-gradient(135deg, var(--color-mint) 0%, var(--color-electric-purple) 50%, var(--color-hot-pink) 100%);
+    --gradient-glow: radial-gradient(circle, rgba(243, 117, 194, 0.3) 0%, transparent 70%);
 }
 
-/* Purple Gradient Utilities */
-.bg-gradient-purple {
-    background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-deep-purple) 100%);
+/* =================================
+   CUSTOM ANIMATIONS
+   ================================= */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
-.bg-gradient-purple-light {
-    background: linear-gradient(135deg, var(--color-purple-light) 0%, var(--color-purple) 100%);
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(177, 83, 215, 0.5),
+            0 0 40px rgba(243, 117, 194, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(177, 83, 215, 0.8),
+            0 0 60px rgba(243, 117, 194, 0.5);
+    }
 }
 
-.text-gradient-purple {
-    background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-deep-purple) 100%);
+@keyframes gradient-shift {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes wave-move {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* =================================
+   GLASSMORPHISM UTILITIES
+   ================================= */
+.glass {
+    background: rgba(240, 255, 223, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.glass-strong {
+    background: rgba(240, 255, 223, 0.25);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+}
+
+/* =================================
+   NEON GLOW EFFECTS
+   ================================= */
+.neon-purple {
+    box-shadow: 0 0 10px rgba(177, 83, 215, 0.5),
+        0 0 20px rgba(177, 83, 215, 0.3),
+        0 0 30px rgba(177, 83, 215, 0.2);
+}
+
+.neon-pink {
+    box-shadow: 0 0 10px rgba(243, 117, 194, 0.5),
+        0 0 20px rgba(243, 117, 194, 0.3),
+        0 0 30px rgba(243, 117, 194, 0.2);
+}
+
+.neon-text-purple {
+    text-shadow: 0 0 10px rgba(177, 83, 215, 0.8),
+        0 0 20px rgba(177, 83, 215, 0.5),
+        0 0 30px rgba(177, 83, 215, 0.3);
+}
+
+/* =================================
+   CUSTOM BUTTON STYLES
+   ================================= */
+.btn-futuristic {
+    @apply relative px-8 py-4 rounded-2xl font-bold text-white overflow-hidden;
+    @apply transition-all duration-500 transform hover:scale-105;
+    background: linear-gradient(135deg, #B153D7 0%, #F375C2 100%);
+    box-shadow: 0 10px 30px rgba(177, 83, 215, 0.4);
+}
+
+.btn-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn-futuristic:hover::before {
+    left: 100%;
+}
+
+.btn-futuristic:hover {
+    box-shadow: 0 15px 40px rgba(243, 117, 194, 0.6),
+        0 0 60px rgba(177, 83, 215, 0.4);
+}
+
+.btn-outline-futuristic {
+    @apply px-8 py-4 rounded-2xl font-semibold border-2 transition-all duration-300;
+    border-color: var(--color-electric-purple);
+    color: var(--color-electric-purple);
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-outline-futuristic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #B153D7 0%, #F375C2 100%);
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+.btn-outline-futuristic:hover {
+    color: white;
+    border-color: transparent;
+}
+
+.btn-outline-futuristic:hover::before {
+    width: 100%;
+}
+
+/* WhatsApp Button Style */
+.btn-whatsapp {
+    @apply px-8 py-4 rounded-2xl font-semibold border-2 transition-all duration-300;
+    border-color: var(--color-electric-purple);
+    color: var(--color-electric-purple);
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-whatsapp::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+.btn-whatsapp:hover {
+    color: white;
+    border-color: #25D366;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.5),
+        0 0 40px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover::before {
+    width: 100%;
+}
+
+/* =================================
+   CARD STYLES
+   ================================= */
+.card-futuristic {
+    @apply bg-white/90 rounded-3xl p-8 transition-all duration-500;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(177, 83, 215, 0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.card-futuristic:hover {
+    @apply transform -translate-y-2;
+    border-color: rgba(177, 83, 215, 0.3);
+    box-shadow: 0 20px 60px rgba(177, 83, 215, 0.15),
+        0 0 40px rgba(243, 117, 194, 0.1);
+}
+
+.card-glass {
+    @apply rounded-3xl p-8 transition-all duration-500;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+.card-glass:hover {
+    @apply transform -translate-y-2;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 20px 60px rgba(177, 83, 215, 0.2),
+        0 0 50px rgba(243, 117, 194, 0.15);
+}
+
+/* =================================
+   GRADIENT TEXT
+   ================================= */
+.text-gradient-futuristic {
+    background: linear-gradient(135deg, #B153D7 0%, #F375C2 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-/* Custom Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.text-gradient-rainbow {
+    background: linear-gradient(135deg, #F0FFDF 0%, #B153D7 50%, #F375C2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
 }
 
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+/* =================================
+   WAVE BACKGROUND
+   ================================= */
+.wave-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
 }
 
-@keyframes blob {
-    0% {
-        transform: translate(0px, 0px) scale(1);
-    }
-
-    33% {
-        transform: translate(30px, -50px) scale(1.1);
-    }
-
-    66% {
-        transform: translate(-20px, 20px) scale(0.9);
-    }
-
-    100% {
-        transform: translate(0px, 0px) scale(1);
-    }
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    animation: wave-move 20s linear infinite;
 }
 
-.animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out;
+.wave:nth-child(2) {
+    animation-duration: 15s;
+    opacity: 0.7;
 }
 
-.animate-slide-in-right {
-    animation: slideInRight 0.6s ease-out;
+.wave:nth-child(3) {
+    animation-duration: 25s;
+    opacity: 0.5;
 }
 
-.animate-blob {
-    animation: blob 7s infinite;
+/* =================================
+   FLOATING ELEMENTS
+   ================================= */
+.float-element {
+    animation: float 6s ease-in-out infinite;
 }
 
-.animation-delay-2000 {
-    animation-delay: 2s;
+.float-element-delayed {
+    animation: float 6s ease-in-out 2s infinite;
 }
 
-.animation-delay-4000 {
-    animation-delay: 4s;
+/* =================================
+   SHIMMER EFFECT
+   ================================= */
+.shimmer {
+    position: relative;
+    overflow: hidden;
 }
 
-/* Custom Components */
-.btn-primary {
-    @apply px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
-    background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-deep-purple) 100%);
+.shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    animation: shimmer 2.5s linear infinite;
 }
 
-.btn-primary:hover {
-    background: linear-gradient(135deg, var(--color-purple-light) 0%, var(--color-purple) 100%);
+/* =================================
+   HOVER GLOW EFFECTS
+   ================================= */
+.hover-glow {
+    transition: all 0.3s ease;
 }
 
-.btn-outline {
-    @apply px-6 py-3 rounded-lg font-semibold border-2 transition-all duration-300;
-    border-color: var(--color-purple);
-    color: var(--color-purple);
+.hover-glow:hover {
+    box-shadow: 0 0 30px rgba(177, 83, 215, 0.6),
+        0 0 50px rgba(243, 117, 194, 0.4);
 }
 
-.btn-outline:hover {
-    background: var(--color-purple);
-    color: white;
+/* =================================
+   GRID PATTERN OVERLAY
+   ================================= */
+.grid-pattern {
+    background-image:
+        linear-gradient(rgba(177, 83, 215, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(177, 83, 215, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
 }
 
-.card {
-    @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-2xl;
+/* =================================
+   SMOOTH SCROLLING
+   ================================= */
+html {
+    scroll-behavior: smooth;
 }
 
-.card-hover {
-    @apply transform hover:-translate-y-2;
+/* =================================
+   CUSTOM SCROLLBAR
+   ================================= */
+::-webkit-scrollbar {
+    width: 12px;
 }
 
-/* Navbar Styles */
-.navbar-scrolled {
-    @apply shadow-lg;
-    background: linear-gradient(135deg, rgba(177, 83, 215, 0.95) 0%, rgba(77, 47, 178, 0.95) 100%);
+::-webkit-scrollbar-track {
+    background: #F0FFDF;
 }
 
-/* Hero Section */
-.hero-overlay {
-    background: linear-gradient(135deg, rgba(77, 47, 178, 0.7) 0%, rgba(177, 83, 215, 0.7) 100%);
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #B153D7 0%, #F375C2 100%);
+    border-radius: 6px;
 }
 
-/* Package Card Styles */
-.package-card {
-    @apply bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl;
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #9933C2 0%, #F05EBB 100%);
 }
 
-.package-card:hover {
-    @apply transform -translate-y-2;
-}
-
-.package-badge {
-    @apply absolute top-4 right-4 px-3 py-1 rounded-full text-white text-sm font-semibold;
-    background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-deep-purple) 100%);
-}
-
-/* Form Styles */
-.form-input {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300;
-}
-
-.form-input:focus {
-    border-color: var(--color-purple);
-    box-shadow: 0 0 0 3px rgba(177, 83, 215, 0.1);
-}
-
-/* Responsive Typography */
+/* =================================
+   RESPONSIVE TYPOGRAPHY
+   ================================= */
 @media (max-width: 640px) {
     h1 {
-        @apply text-3xl;
+        @apply text-4xl;
     }
 
     h2 {
-        @apply text-2xl;
+        @apply text-3xl;
     }
 }
 
-/* Loading Spinner */
-.spinner {
-    border: 3px solid rgba(177, 83, 215, 0.3);
-    border-top-color: var(--color-purple);
+/* =================================
+   LOADING SPINNER
+   ================================= */
+.spinner-futuristic {
+    border: 4px solid rgba(177, 83, 215, 0.2);
+    border-top-color: var(--color-electric-purple);
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     animation: spin 1s linear infinite;
 }
 
@@ -181,25 +404,13 @@
     }
 }
 
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--color-purple) 0%, var(--color-deep-purple) 100%);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--color-deep-purple);
+/* =================================
+   PARTICLE EFFECT (Optional)
+   ================================= */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(243, 117, 194, 0.8) 0%, transparent 70%);
+    pointer-events: none;
+    animation: float 8s ease-in-out infinite;
 }

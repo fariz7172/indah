@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? 'Olik Internet' }} - Paket Internet Terbaik</title>
+    <title>{{ $title ?? 'Indah Admin Sales' }} - Paket Internet Terbaik</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -21,7 +21,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <a href="{{ route('home') }}" class="flex items-center">
-                        <img src="{{ asset('img/logo-navbar.png') }}" alt="Olik Internet Logo" class="h-10 w-auto">
+                        <img src="{{ asset('img/logo-navbar.png') }}" alt="Indah Internet Logo" class="h-10 w-auto">
                     </a>
                 </div>
 
@@ -68,7 +68,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- Company Info -->
                 <div class="col-span-1 md:col-span-2">
-                    <h3 class="text-2xl font-bold text-gradient-purple mb-4">Olik Internet</h3>
+                    <h3 class="text-2xl font-bold text-gradient-purple mb-4">Indah Admin Sales MyRepublic</h3>
                     <p class="text-gray-400 mb-4">
                         Penyedia layanan internet terpercaya dengan kecepatan super cepat dan harga terjangkau.
                     </p>
@@ -100,8 +100,8 @@
                 <div>
                     <h4 class="font-semibold mb-4">Kontak</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li>📞 +62 857-1401-7756</li>
-                        <li>📧 info@olikinternet.com</li>
+                        <li>📞 +62 858-1457-8401</li>
+                        <li>📧 info@Indahinternet.com</li>
                         <li>📍 Jakarta, Indonesia</li>
                         <li>🕐 24/7 Customer Support</li>
                     </ul>
@@ -109,7 +109,7 @@
             </div>
 
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; {{ date('Y') }} Olik Internet. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} Indah Admin Salses Product MyRepublic. All rights reserved.</p>
             </div>
         </div>
     </footer>

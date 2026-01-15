@@ -5,7 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title ?? 'Indah Admin Sales' }} - Paket Internet Terbaik</title>
+    {{-- SEO Meta Tags --}}
+    <title>@yield('title', 'Indah Admin Sales - Paket Internet Terbaik')</title>
+    <meta name="description" content="@yield('meta_description', 'Penyedia layanan internet (ISP) terbaik dengan harga hemat. Paket internet unlimited untuk rumah & bisnis. Streaming lancar, tanpa FUP.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'internet murah, pasang wifi, internet unlimited, indah internet, myrepublic, paket internet hemat, kuota hemat')">
+    <meta name="author" content="Indah Internet">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    {{-- Open Graph / Facebook --}}
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', 'Indah Internet - Paket Internet Terbaik')">
+    <meta property="og:description" content="@yield('meta_description', 'Penyedia layanan internet (ISP) terbaik dengan harga hemat. Paket internet unlimited untuk rumah & bisnis. Streaming lancar, tanpa FUP.')">
+    <meta property="og:image" content="@yield('og_image', asset('img/indah.jpeg'))">
+
+    {{-- Twitter --}}
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="@yield('title', 'Indah Internet - Paket Internet Terbaik')">
+    <meta property="twitter:description" content="@yield('meta_description', 'Penyedia layanan internet (ISP) terbaik dengan harga hemat. Paket internet unlimited untuk rumah & bisnis. Streaming lancar, tanpa FUP.')">
+    <meta property="twitter:image" content="@yield('og_image', asset('img/indah.jpeg'))">
+
+    {{-- JSON-LD Schema --}}
+    @stack('seo-schema')
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

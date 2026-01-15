@@ -1,5 +1,61 @@
 @extends('layouts.app')
 
+@section('title', 'Indah Internet - Paket Internet Hemat, Unlimited & Live Streaming Lancar')
+@section('meta_description', 'Cari paket internet hemat & unlimited? Indah Internet solusi pasang WiFi rumah terbaik. Cocok untuk live streaming & youtube tanpa buffer. Kuota hemat, harga mulai 200rb-an!')
+@section('meta_keywords', 'paket internet murah, paket internet hemat, pasang wifi murah, internet unlimited, wifi rumah, provider internet terbaik, indah internet, paket live streaming, paket murah youtube, kuota hemat, wifi unlimited tanpa kuota')
+
+@push('seo-schema')
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "InternetServiceProvider",
+  "name": "Indah Internet",
+  "url": "{{ url('/') }}",
+  "logo": "{{ asset('img/logo-navbar.png') }}",
+  "image": "{{ asset('img/indah.jpeg') }}",
+  "description": "Penyedia layanan internet (ISP) terbaik untuk rumah dan bisnis. Paket internet hemat, unlimited tanpa FUP, cocok untuk live streaming dan YouTube.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Teknologi Informasi No. 123",
+    "addressLocality": "Jakarta Selatan",
+    "addressRegion": "DKI Jakarta",
+    "postalCode": "12345",
+    "addressCountry": "ID"
+  },
+  "telephone": "+6285814578401",
+  "priceRange": "Rp 210.000 - Rp 900.000",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "09:00",
+      "closes": "14:00"
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+6285814578401",
+    "contactType": "customer service",
+    "areaServed": "ID",
+    "availableLanguage": "Indonesian"
+  },
+  "offers": {
+    "@type": "Offer",
+    "name": "Paket Internet Hemat Unlimited",
+    "price": "210000",
+    "priceCurrency": "IDR",
+    "description": "Internet unlimited up to 20 Mbps, cocok untuk streaming YouTube dan sosial media."
+  }
+}
+</script>
+@endpush
+
 @section('content')
 {{-- PREMIUM CAROUSEL SLIDER --}}
 @if($heroSlides && $heroSlides->count() > 0)
